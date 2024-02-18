@@ -48,50 +48,50 @@
 
                             </div><!-- /.card-header -->
                             <div class="card-body" >
-                                <form method="POST" action="" id="myForm" enctype="multipart/form-data" >
+                                <form method="POST" action="{{ route('hospitalform.store') }}" id="myForm" enctype="multipart/form-data" >
                                     @csrf
 
                                     <div class="form-row ">
 
                                         <div class="col-md-4">
                                             <label>No. Of Patient Admit from Emergency  <font style="color: red">*</font></label>
-                                            <input type="text" name="name" value="" class="form-control form-control-sm"id="name">
+                                            <input type="text" name="admit_emergency" value="" class="form-control form-control-sm"id="name">
 
                                         </div>
 
                                         <div class="col-md-4">
                                             <label>No. of Ward (Last Date) <font style="color: red">*</font></label>
-                                            <input type="text" name="fname" value="" class="form-control form-control-sm"id="fname">
+                                            <input type="text" name="ward_no" value="" class="form-control form-control-sm"id="fname">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Ward Occupied <font style="color: red">*</font></label>
-                                            <input type="text" name="mname" value="" class="form-control form-control-sm"id="mname">
+                                            <input type="text" name="ward_occuiped" value="" class="form-control form-control-sm"id="mname">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Cabin (Last Date) <font style="color: red">*</font></label>
-                                            <input type="text" name="mobile" value="" class="form-control form-control-sm"id="mobile">
+                                            <input type="text" name="cabin_no" value="" class="form-control form-control-sm"id="mobile">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Cabin Occupied <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="total_bed" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Total Hospital Bed <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="total_bed_occuiped" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Total Hospital Bed Occupied <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="admited_patient_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Admitted Patient <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="released_patient_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
@@ -101,110 +101,110 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. Of Emergency Patient <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="emergency_patient" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Consultants <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="consultant_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Outdoor patients <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="opd_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Physiotherapy patients <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="physiotherapy_patient" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Dental patients <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="dental_patient" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of CT Scan<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="ctscan_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	No. of MRI<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="mri_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of imaging (without CT & MRI)<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="imaging_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	No. of Lab Investigation<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="lab_investigation_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>No. of Operation <font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="ot_no" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Canteen Sales<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="canteen_sales" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Drug outdoor sales<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="drug_outdoor_sales" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Drug Indoor sales<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="drug_indoor_sales" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Total Drug Sales<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="total_drug_sales" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Collection: Imaging<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="collection_imaging" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Collection :Lab<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="collection_lab" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
 
                                         <div class="col-md-4">
                                             <label>Collection : Hospital<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="collection_hospital" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>Estimated income<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="estimated_income" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Estimated expense<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="estimated_expense" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
                                         <div class="col-md-4">
                                             <label>	Estimated Net Income<font style="color: red">*</font></label>
-                                            <input type="text" name="address" value="" class="form-control form-control-sm"id="address">
+                                            <input type="text" name="estimated_netincome" value="" class="form-control form-control-sm"id="address">
 
                                         </div>
 
 
                                         <div class="col-md-4">
                                             <label>Date of Entry <font style="color: red">*</font></label>
-                                            <input type="date" name="dob" value="" class=" form-control form-control-sm " autocomplete="off" id="dob">
+                                            <input type="date" name="entry_date" value="" class=" form-control form-control-sm " autocomplete="off" id="entry_date">
 
                                         </div>
 
@@ -251,49 +251,10 @@
 
             $('#myForm').validate({
                 rules: {
-                    "name": {
+                    "entry_date": {
                         required: true,
-                    },
-                    "fname": {
-                        required: true,
-                    },
-                    "mname": {
-                        required: true,
-
-                    },
-                    "mobile": {
-                        required: true,
-
-                    },
-                    "address": {
-                        required: true,
-
-                    },
-                    "gender": {
-                        required: true,
-
-                    },
-                    "religion": {
-                        required: true,
-
-                    },
-                    "dob": {
-                        required: true,
-
-                    },
-                    "salary": {
-                        required: true,
-
-                    },
-
-                    "designation_id": {
-                        required: true,
-
-                    },
-                    "join_date": {
-                        required: true,
-
                     }
+
                 },
 
                 messages: {

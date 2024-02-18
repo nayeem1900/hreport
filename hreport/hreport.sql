@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2024 at 12:45 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Feb 18, 2024 at 03:10 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -671,10 +672,17 @@ CREATE TABLE `branches` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `branch_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `branch_name`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'Islami Bank Central Hospital', 'Kakrial, Dhaka.', '2024-02-16 03:16:45', '2024-02-16 03:16:45'),
+(2, 'Islami Bank Hospital Motijheel', 'Motijheel,Dhaka-1000', '2024-02-16 11:20:03', '2024-02-16 11:20:03');
 
 -- --------------------------------------------------------
 
@@ -1121,6 +1129,57 @@ CREATE TABLE `galleries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hospital_entries`
+--
+
+CREATE TABLE `hospital_entries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `admit_emergency` int(11) DEFAULT NULL,
+  `ward_no` int(11) DEFAULT NULL,
+  `ward_occuiped` int(11) DEFAULT NULL,
+  `cabin_no` int(11) DEFAULT NULL,
+  `total_bed` int(11) DEFAULT NULL,
+  `total_bed_occuiped` int(11) DEFAULT NULL,
+  `admited_patient_no` int(11) DEFAULT NULL,
+  `released_patient_no` int(11) DEFAULT NULL,
+  `emergency_patient` int(11) DEFAULT NULL,
+  `consultant_no` int(11) DEFAULT NULL,
+  `opd_no` int(11) DEFAULT NULL,
+  `physiotherapy_patient` int(11) DEFAULT NULL,
+  `dental_patient` int(11) DEFAULT NULL,
+  `ctscan_no` int(11) DEFAULT NULL,
+  `mri_no` int(11) DEFAULT NULL,
+  `imaging_no` int(11) DEFAULT NULL,
+  `lab_investigation_no` int(11) DEFAULT NULL,
+  `ot_no` int(11) DEFAULT NULL,
+  `canteen_sales` int(11) DEFAULT NULL,
+  `drug_outdoor_sales` int(11) DEFAULT NULL,
+  `drug_indoor_sales` int(11) DEFAULT NULL,
+  `total_drug_sales` int(11) DEFAULT NULL,
+  `collection_imaging` int(11) DEFAULT NULL,
+  `collection_lab` int(11) DEFAULT NULL,
+  `collection_hospital` int(11) DEFAULT NULL,
+  `estimated_income` int(11) DEFAULT NULL,
+  `estimated_expense` int(11) DEFAULT NULL,
+  `estimated_netincome` int(11) DEFAULT NULL,
+  `entry_date` date NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hospital_entries`
+--
+
+INSERT INTO `hospital_entries` (`id`, `user_id`, `admit_emergency`, `ward_no`, `ward_occuiped`, `cabin_no`, `total_bed`, `total_bed_occuiped`, `admited_patient_no`, `released_patient_no`, `emergency_patient`, `consultant_no`, `opd_no`, `physiotherapy_patient`, `dental_patient`, `ctscan_no`, `mri_no`, `imaging_no`, `lab_investigation_no`, `ot_no`, `canteen_sales`, `drug_outdoor_sales`, `drug_indoor_sales`, `total_drug_sales`, `collection_imaging`, `collection_lab`, `collection_hospital`, `estimated_income`, `estimated_expense`, `estimated_netincome`, `entry_date`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 34, 1, 2, 2, 1, 2, 3, NULL, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, '2024-02-18', 34, NULL, '2024-02-17 20:08:18', '2024-02-17 20:08:18');
 
 -- --------------------------------------------------------
 
@@ -1953,7 +2012,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (31, '2022_01_09_113448_create_ibchks_table', 18),
 (32, '2022_10_10_072856_create_galleries_table', 19),
 (33, '2023_03_23_054812_create_jakats_table', 20),
-(35, '2024_02_15_074947_create_branches_table', 21);
+(36, '2024_02_16_091221_create_branches_table', 21),
+(38, '2024_02_17_145907_create_hospital_entries_table', 22);
 
 -- --------------------------------------------------------
 
@@ -2091,7 +2151,7 @@ CREATE TABLE `tests` (
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `branch_id` int(255) NOT NULL,
+  `branch_id` int(255) DEFAULT NULL,
   `role_id` int(11) NOT NULL DEFAULT 2,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -2106,7 +2166,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `branch_id`, `role_id`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Harun', 0, 1, 'nayeembd84@gmail.com', NULL, '$2y$10$k1uBpUIL4/Jh5oc.DPrY7epWNu.ewARbIeZhmfcicj3tQhQMnGodm', NULL, NULL, '2023-07-06 11:05:12'),
+(1, 'Harun', 1, 1, 'nayeembd84@gmail.com', NULL, '$2y$10$k1uBpUIL4/Jh5oc.DPrY7epWNu.ewARbIeZhmfcicj3tQhQMnGodm', NULL, NULL, '2023-07-06 11:05:12'),
 (2, 'Sayema', 0, 7, 'sayema@gmail.com', NULL, '$2y$10$jrlHz2UPp.1c8J8aUli.J.CP3Y3ewJ8zTOrOgPsE6RV0j6Um3W3k.', NULL, '2022-01-09 02:59:50', '2023-02-12 11:41:08'),
 (3, 'Syedur', 0, 4, 'syedibh@gmail.com', NULL, '$2y$10$paU4OT0xfCdId1eHLxJrzO2QeakN4LG466km.q7rwIM68oan4ZFMy', NULL, '2022-01-09 03:01:02', '2022-01-18 18:14:10'),
 (4, 'Shafaet Jamil', 0, 3, 'shafaet.ibf@gmail.com', NULL, '$2y$10$JomAONaL1kLPdFAXtEYgWuR/mqw9LrbYpMh3WToisJ1UjjPrMH.hO', NULL, '2022-01-10 11:28:32', '2022-01-10 11:28:32'),
@@ -2120,7 +2180,7 @@ INSERT INTO `users` (`id`, `name`, `branch_id`, `role_id`, `email`, `email_verif
 (12, 'Mohammad Akhter hossain', 0, 4, 'akhtaribh@gmail.com', NULL, '$2y$10$ljtXxIQMjmp83L2DvVfyg.e58FBNOxLbXJwJ5kYqU0diRN5pLZ1zG', NULL, '2022-01-31 12:07:42', '2022-01-31 16:36:06'),
 (13, 'Md. Salauddin', 0, 4, 'ibshmarketing@gmail.com', NULL, '$2y$10$VQdJ.JSc0D74DW.aZOlSDOM95OVqf3nIbKTdcOCtU1Dwl5vHM2hNO', NULL, '2022-02-07 11:50:41', '2022-02-07 11:50:41'),
 (14, 'PalashSiddique', 0, 7, 'itibchk@gmail.com', NULL, '$2y$10$1DXM75KJN4VPicggdZiGVu9dGpKhs8bgLe2qQ/qqeAku02w1jBHYe', NULL, '2022-02-14 10:35:55', '2022-02-14 10:35:55'),
-(15, 'test', 0, 4, 'test@gmail.com', NULL, '$2y$10$P33mlAV4MdHKDyrCrIjzXept7gAYzCJEuS5y/UE3L3xVHVlBROxV6', NULL, '2022-02-15 11:19:32', '2022-02-15 11:19:32'),
+(15, 'test', 1, 1, 'test@gmail.com', NULL, '$2y$10$k1uBpUIL4/Jh5oc.DPrY7epWNu.ewARbIeZhmfcicj3tQhQMnGodm', NULL, '2022-02-15 11:19:32', '2024-02-16 11:23:11'),
 (16, 'Zakir Hossain', 0, 4, 'zakir.hossain1310@gmail.com', NULL, '$2y$10$IK1pYJ7gaCzzecsUbS6SSeDM9Q7KllPgKL0bUyfGvI9sTGf.0SSzO', NULL, '2022-02-16 16:21:23', '2022-02-16 16:21:23'),
 (17, 'Md. Alamgir Hossain', 0, 4, 'alamgiribhk@gmail.com', NULL, '$2y$10$poCqnAGMLlJY/YV/FD0JteKo.UYbZeBdBJO8WqoALACTwu4PyhdwK', NULL, '2022-02-28 17:34:56', '2022-02-28 17:34:56'),
 (18, 'Md.Moniruzzaman', 0, 4, 'zmonir111@gmail.com', NULL, '$2y$10$vYWxWIvbze20/luH2YTTh.aFih2RN3QXrg6ez0zwxVs6OpwxQ0Ys.', NULL, '2022-03-02 15:45:45', '2022-03-02 16:02:38'),
@@ -2136,7 +2196,10 @@ INSERT INTO `users` (`id`, `name`, `branch_id`, `role_id`, `email`, `email_verif
 (28, 'M.Rubel Hossain', 0, 4, 'ibchmadaripurltd@gmail.com', NULL, '$2y$10$y8/pWCZ/BEiTIBsZp6uLpuluff3DQygz1UASnV4tXLCPE9wSSFmte', NULL, '2022-03-06 16:16:20', '2022-03-06 16:39:44'),
 (29, 'Shahadat Hosain', 0, 4, 'shahadat80@gmail.com', NULL, '$2y$10$C83cJdUr7QQP.5bjDML56eEBjhum8d.M0Z5QDISnMfiniEZtQfk0u', NULL, '2022-03-06 16:35:13', '2022-03-06 16:35:13'),
 (30, 'Kazi Md Ohidur Rahman', 0, 3, 'ibf.engg@gmail.com', NULL, '$2y$10$SPtfrKWWNnDO6c2Jd.Pzn.piMtmhtM1Lk4nh0RA/qM/i8CnW.hc4.', NULL, '2022-04-25 11:23:32', '2022-04-25 12:05:30'),
-(31, 'Abu Taher', 0, 6, 'abu.taher.2005@gmail.com', NULL, '$2y$10$EgCRWFWVJsg.goBca0d3sufUI.FVTfJdUFfeCn8/NXvLFOeWlrySi', NULL, '2022-06-07 10:30:36', '2022-06-07 10:38:08');
+(31, 'Abu Taher', 0, 6, 'abu.taher.2005@gmail.com', NULL, '$2y$10$EgCRWFWVJsg.goBca0d3sufUI.FVTfJdUFfeCn8/NXvLFOeWlrySi', NULL, '2022-06-07 10:30:36', '2022-06-07 10:38:08'),
+(32, 'ibf_test', 1, 1, 'ibftest@gmail.com', NULL, '$2y$10$f5RD.Nx9c/mMxutYF1mJ/OicwYxGxXgckrnTuqATOcS34fpcBJjPC', NULL, '2024-02-16 08:52:06', '2024-02-16 11:22:01'),
+(33, 't', 1, 1, 't@gmail.com', NULL, '$2y$10$k1uBpUIL4/Jh5oc.DPrY7epWNu.ewARbIeZhmfcicj3tQhQMnGodm', NULL, '2024-02-16 11:26:14', '2024-02-16 11:26:54'),
+(34, 'dhaka', 1, 3, 'dhaka@gmail.com', NULL, '$2y$10$1rv5.00ToNdqiLRpjzKC0eu25JjWNdfx.ULFbA8GwT7aC4idz4e8W', NULL, '2024-02-17 19:49:06', '2024-02-17 19:49:06');
 
 --
 -- Indexes for dumped tables
@@ -2170,6 +2233,12 @@ ALTER TABLE `etenders`
 -- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hospital_entries`
+--
+ALTER TABLE `hospital_entries`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2273,7 +2342,7 @@ ALTER TABLE `assign_doctors`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `carriers`
@@ -2292,6 +2361,12 @@ ALTER TABLE `etenders`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `hospital_entries`
+--
+ALTER TABLE `hospital_entries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ibchks`
@@ -2333,7 +2408,7 @@ ALTER TABLE `logos`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -2369,7 +2444,7 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
